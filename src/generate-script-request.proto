@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package kobiton;
+
+message GenerateScriptRequest {
+  message ServerInfo {
+    string api_url = 1;
+    string portal_url = 2;
+    string username = 3;
+    string api_key = 4;
+  }
+
+  message Authentication {
+    string username = 1;
+    string api_key = 2;
+  }
+
+  message Device {
+    string name = 1;
+    string platform_name = 2;
+    string platform_version = 3;
+    string group = 4; // e.g: KOBITON, ORGANIZATION...
+  }
+
+  message OtpData {
+    bool otp_encountered = 1;
+  }
+
+  message AppInfo {
+    string id = 1;
+    string app_path = 2;
+    string app_version_id = 3;
+    string browserName = 4;
+  }
+
+  message DesiredCapabilities {
+    int32 new_command_timeout = 1;
+    bool no_reset = 2;
+    bool full_reset = 3;
+    bool capture_screenshots = 4;
+    bool ensure_webviews_have_pages = 5;
+    bool kobiton_visual_validation = 6;
+    bool kobiton_text_validation = 7;
+    bool kobiton_flex_correct = 8;
+    bool kobiton_include_system_windows = 9;
+    int32 kobiton_baseline_session_id = 10;
+    string browser_name = 11;
+    AppInfo app = 12;
+  }
+
+  message TestStep {
+    message SelectorConfiguration {
+      message Selector {
+        string type = 1; // e.g: xpath, resourceId...
+        string value = 2;
+      }
+
+      Device device = 1; // Is null. So selectors is default for other devices.
+      repeated Selector selectors = 2;
+    }
+
+    string id = 1;
+    string context = 2; // e.g: NATIVE, WEB...
+    repeated SelectorConfiguration selector_configurations = 3;
+    string action_json = 4;
+    int32 finding_element_timeout = 5;
+    bool is_on_keyboard = 6;
+  }
+
+  message RequestScript {
+    string name = 1;
+    string language = 2; // e.g: java, nodejs
+    string testing_framework = 3; // e.g: junit, testng, mocha
+  }
+
+  uint64 sent_at = 1;
+  ServerInfo server_info = 2;
+
+  bool is_manual_session = 3;
+  string manual_session_id = 4;
+  repeated Device devices = 5;
+
+  repeated TestStep test_steps = 6;
+  AppInfo app_under_test = 7;
+  repeated DesiredCapabilities desired_capabilities = 7;
+
+  RequestScript request_script = 8;
+}
