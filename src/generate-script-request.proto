@@ -44,7 +44,7 @@ message GenerateScriptRequest {
     bool kobiton_flex_correct = 8;
     bool kobiton_include_system_windows = 9;
     int32 kobiton_baseline_session_id = 10;
-    string browser_name = 11
+    string browser_name = 11;
   }
 
   message TestStep {
