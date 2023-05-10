@@ -81,7 +81,7 @@ message GenerateScriptRequest {
 
   repeated TestStep test_steps = 6;
   AppInfo app_under_test = 7;
-  repeated DesiredCapabilities desired_capabilities = 7;
+  repeated DesiredCapabilities desired_capabilities = 8;
 
-  RequestScript request_script = 8;
+  RequestScript request_script = 9;
 }
