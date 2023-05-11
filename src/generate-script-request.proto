@@ -46,7 +46,7 @@ message GenerateScriptRequest {
 
   message DeviceAndDesiredCapabilities {
     int32 device_id = 1;
-    DesiredCapabilities desired_capabilities = 2;
+    repeated DesiredCapabilities desired_capabilities = 2;
   }
 
   message TestStep {
