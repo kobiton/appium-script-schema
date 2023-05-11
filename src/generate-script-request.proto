@@ -16,10 +16,15 @@ message GenerateScriptRequest {
   }
 
   message Device {
-    string name = 1;
-    string platform_name = 2;
-    string platform_version = 3;
-    string group = 4; // e.g: KOBITON, ORGANIZATION...
+    message Capabilities {
+      string platform_name = 1;
+      string platform_version = 2;
+    }
+
+    int32 id = 1;
+    string name = 2;
+    string device_source = 3; // e.g: KOBITON, SAUCE_LABS
+    Capabilities capabilities = 4;
   }
 
   message OtpData {
@@ -37,6 +42,11 @@ message GenerateScriptRequest {
     string key = 1;
     string value = 2;
     string type = 3;
+  }
+
+  message DeviceAndDesiredCapabilities {
+    int32 device_id = 1;
+    DesiredCapabilities desired_capabilities = 2;
   }
 
   message TestStep {
@@ -73,7 +83,7 @@ message GenerateScriptRequest {
 
   repeated TestStep test_steps = 6;
   AppInfo app_under_test = 7;
-  repeated DesiredCapabilities desired_capabilities = 8;
+  repeated DeviceAndDesiredCapabilities desired_capabilities_of_devices = 8;
 
   RequestScript request_script = 9;
 }
