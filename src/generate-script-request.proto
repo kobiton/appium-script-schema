@@ -34,17 +34,9 @@ message GenerateScriptRequest {
   }
 
   message DesiredCapabilities {
-    int32 new_command_timeout = 1;
-    bool no_reset = 2;
-    bool full_reset = 3;
-    bool capture_screenshots = 4;
-    bool ensure_webviews_have_pages = 5;
-    bool kobiton_visual_validation = 6;
-    bool kobiton_text_validation = 7;
-    bool kobiton_flex_correct = 8;
-    bool kobiton_include_system_windows = 9;
-    int32 kobiton_baseline_session_id = 10;
-    string browser_name = 11;
+    string key = 1;
+    string value = 2;
+    string type = 3;
   }
 
   message TestStep {
