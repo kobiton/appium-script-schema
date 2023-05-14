@@ -3,16 +3,18 @@ syntax = "proto3";
 package kobiton;
 
 message GenerateScriptRequest {
+  message SauceLabs {
+    string username = 1;
+    string region = 2;
+    string url = 3;
+  }
+
   message ServerInfo {
     string api_url = 1;
     string portal_url = 2;
     string username = 3;
     string api_key = 4;
-  }
-
-  message Authentication {
-    string username = 1;
-    string api_key = 2;
+    SauceLabs sauce_labs = 5;
   }
 
   message Device {
