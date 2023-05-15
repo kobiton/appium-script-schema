@@ -29,10 +29,6 @@ message GenerateScriptRequest {
     Capabilities capabilities = 4;
   }
 
-  message OtpData {
-    bool otp_encountered = 1;
-  }
-
   message AppInfo {
     string id = 1;
     string app_path = 2;
