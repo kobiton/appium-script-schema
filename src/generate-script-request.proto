@@ -33,10 +33,10 @@ message GenerateScriptRequest {
     string id = 1;
     string app_path = 2;
     string app_version_id = 3;
-    string browserName = 4;
+    string browser_name = 4;
   }
 
-  message DesiredCapabilities {
+  message DesiredCapability {
     string key = 1;
     string value = 2;
     string type = 3;
@@ -44,7 +44,7 @@ message GenerateScriptRequest {
 
   message DeviceAndDesiredCapabilities {
     int32 device_id = 1;
-    repeated DesiredCapabilities desired_capabilities = 2;
+    repeated DesiredCapability desired_capabilities = 2;
   }
 
   message TestStep {
