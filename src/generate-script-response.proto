@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package kobiton;
+
+message GenerateScriptResponse {
+  uint64 sent_at = 1;
+  string error_message = 2;
+  bytes script_in_zip_format = 3;
+}

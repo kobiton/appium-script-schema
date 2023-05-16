@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package kobiton;
+
+message GenerateScriptRequest {
+  message SauceLabs {
+    string username = 1;
+    string region = 2;
+    string url = 3;
+  }
+
+  message ServerInfo {
+    string api_url = 1;
+    string portal_url = 2;
+    string username = 3;
+    string api_key = 4;
+    SauceLabs sauce_labs = 5;
+  }
+
+  message Device {
+    message Capabilities {
+      string platform_name = 1;
+      string platform_version = 2;
+    }
+
+    int32 id = 1;
+    string name = 2;
+    string device_source = 3; // e.g: KOBITON, SAUCE_LABS
+    Capabilities capabilities = 4;
+  }
+
+  message AppInfo {
+    string id = 1;
+    string app_path = 2;
+    string app_version_id = 3;
+    string browser_name = 4;
+  }
+
+  message DesiredCapability {
+    string key = 1;
+    string value = 2;
+    string type = 3;
+  }
+
+  message DeviceAndDesiredCapabilities {
+    int32 device_id = 1;
+    repeated DesiredCapability desired_capabilities = 2;
+  }
+
+  message TestStep {
+    message SelectorConfiguration {
+      message Selector {
+        string type = 1; // e.g: xpath, resourceId...
+        string value = 2;
+      }
+
+      Device device = 1; // Is null. So selectors is default for other devices.
+      repeated Selector selectors = 2;
+    }
+
+    string id = 1;
+    string context = 2; // e.g: NATIVE, WEB...
+    repeated SelectorConfiguration selector_configurations = 3;
+    string action_json = 4;
+    int32 finding_element_timeout = 5;
+    bool is_on_keyboard = 6;
+  }
+
+  message RequestScript {
+    string name = 1;
+    string language = 2; // e.g: java, nodejs
+    string testing_framework = 3; // e.g: junit, testng, mocha
+  }
+
+  uint64 sent_at = 1;
+  ServerInfo server_info = 2;
+
+  bool is_manual_session = 3;
+  string manual_session_id = 4;
+  repeated Device devices = 5;
+
+  repeated TestStep test_steps = 6;
+  AppInfo app_under_test = 7;
+  repeated DeviceAndDesiredCapabilities desired_capabilities_of_devices = 8;
+
+  RequestScript request_script = 9;
+}

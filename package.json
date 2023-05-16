@@ -1,0 +1,14 @@
+{
+  "name": "appium-script-schema",
+  "version": "1.0.0",
+  "repository": "git@github.com:kobiton/appium-script-schema.git",
+  "author": "Kobiton Inc.",
+  "scripts": {
+    "compile": "./scripts/compile.sh",
+    "postinstall": "./scripts/install-protoc.sh"
+  },
+  "devDependencies": {
+    "copy": "^0.3.2",
+    "grpc-tools": "1.11.1"
+  }
+}

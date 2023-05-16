@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package kobiton;
+
+import "generate-script-request.proto";
+import "generate-script-response.proto";
+
+// Generate Appium script service
+service GenerateScript {
+  rpc generate(GenerateScriptRequest) returns (GenerateScriptResponse) {}
+}

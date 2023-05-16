@@ -1,0 +1,16 @@
+node_modules
+package-lock.json
+yarn-error.log
+dist
+.protoc-cache
+.penv
+
+# vim editor
+*.sw[po]
+tags
+
+.idea
+target
+
+# macos
+.DS_Store
